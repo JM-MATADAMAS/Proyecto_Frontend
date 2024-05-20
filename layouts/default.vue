@@ -17,9 +17,10 @@
               max-height="26"
               max-width="98px"
               contain
-              style="margin-left: 151px;"
+              class="logo"
             />
           </v-col>
+          <v-spacer />
           <v-col class="d-none d-md-flex" cols="auto">
             <v-row align="center" justify="center" no-gutters>
               <v-btn
@@ -37,6 +38,7 @@
               </v-btn>
             </v-row>
           </v-col>
+          <v-spacer />
           <v-col class="d-none d-md-flex" cols="auto">
             <v-btn
               rounded
@@ -44,13 +46,13 @@
               elevation="0"
               color="#0A92DD"
               class="fuente login-btn"
-              style="margin-right: 121px;"
             >
               <span style="color: white; text-transform: capitalize;">
                 Login
               </span>
             </v-btn>
           </v-col>
+          <v-spacer />
           <v-col cols="auto" class="d-md-none">
             <v-menu offset-y>
               <template #activator="{ on, attrs }">
@@ -71,12 +73,11 @@
                 </v-list-item>
                 <v-list-item>
                   <v-btn
-                    rounded
+                    text
                     large
                     elevation="0"
-                    color="#0A92DD"
                     class="fuente"
-                    style="color: white; width: 100%;"
+                    style="color:#0A92DD; width: 100%;"
                   >
                     Login
                   </v-btn>
@@ -90,12 +91,6 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <!--v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer-->
   </v-app>
 </template>
 
@@ -108,30 +103,12 @@ export default {
       drawer: false,
       fixed: false,
       items: [
-        {
-          title: 'Home',
-          to: '/'
-        },
-        {
-          title: 'Pricing'
-          // , to: '/Pricing'
-        },
-        {
-          title: 'Use Cases'
-          // , to: '/UseCases'
-        },
-        {
-          title: 'Location'
-          // , to: '/Location'
-        },
-        {
-          title: 'FAQ'
-          // , to: '/'
-        },
-        {
-          title: 'Company'
-          // , to: '/'
-        }
+        { title: 'Home', to: '/' },
+        { title: 'Pricing'/*, to: '/Pricing' */ },
+        { title: 'Use Cases'/*, to: '/UseCases' */ },
+        { title: 'Location'/*, to: '/Location' */ },
+        { title: 'FAQ'/*, to: '/FAQ' */ },
+        { title: 'Company'/*, to: '/Company' */ }
       ],
       miniVariant: false,
       right: true,
@@ -154,5 +131,22 @@ export default {
   font-optical-sizing: auto;
   font-weight: regular;
   font-style: normal;
+}
+
+.logo {
+  margin-left: 151px;
+}
+
+@media (max-width: 1050px) {
+  .logo {
+    margin-left: 50px; /* Ajusta según sea necesario */
+  }
+}
+
+@media (max-width: 960px) {
+  .logo {
+    margin-left: 0;
+    max-width: 50px; /* Ajusta el tamaño según sea necesario */
+  }
 }
 </style>
