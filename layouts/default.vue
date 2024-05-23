@@ -46,6 +46,7 @@
               elevation="0"
               color="#0A92DD"
               class="fuente login-btn"
+              @click="Login()"
             >
               <span style="color: white; text-transform: capitalize;">
                 Login
@@ -78,6 +79,7 @@
                     elevation="0"
                     class="fuente"
                     style="color:#0A92DD; width: 100%;"
+                    @click="Login()"
                   >
                     Login
                   </v-btn>
@@ -93,8 +95,8 @@
     </v-main>
   </v-app>
 </template>
-
 <script>
+
 export default {
   name: 'DefaultLayout',
   data () {
@@ -114,6 +116,13 @@ export default {
       right: true,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  methods: {
+    Login () {
+      this.$router.push({
+        path: '/login/'
+      })
     }
   }
 }
