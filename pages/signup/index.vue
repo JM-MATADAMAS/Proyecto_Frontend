@@ -84,8 +84,8 @@
         </div>
         <!--Menú donde se ingresar a los colaboradores-->
         <div v-if="showStaffFields">
-          <v-select v-model="staffNumber" style="margin-top: 10%;" outlined label="Number of staff" />
-          <v-select v-model="schoolAddress" outlined label="School address" />
+          <v-select v-model="staffNumber" :items="staffItems" style="margin-top: 10%;" outlined label="staff" />
+          <v-select v-model="schoolAddress" :items="schoolItems" outlined label="School address" />
           <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;" @click="completeSignup">
             Next
           </v-btn>
@@ -142,7 +142,9 @@ export default {
       schoolEmail: null,
       password: null,
       passwordConfirm: null,
+      staffItems: ['Admin', 'Secretaria', 'Recursos Humanos', 'Becas', 'Psicología', 'Desportes', 'Biblioteca', 'Laoratorio'],
       staffNumber: null,
+      schoolItems: ['Avenida Universidad No. 789, Colonia El Refugio', 'Boulevard del Sol No. 2345, Colonia La Esperanza', 'Calle Independencia No. 456, Colonia Las Rosas', 'Avenida Revolución No. 678, Colonia San Ángel', 'Calle de los Pinos No. 123, Colonia Centro'],
       schoolAddress: null,
       showPasswordFields: false,
       showStaffFields: false,
@@ -240,7 +242,37 @@ export default {
     completeSignup () {
       this.step = 4
       // Lógica adicional para completar el registro
+      const sendData = {
+        id: Date.now().toString(),
+        email: this.schoolEmail,
+        password: this.password,
+        nombreAdmin: this.adminName,
+        nombreSchool: this.schoolName,
+        numeroStaff: this.staffNumber,
+        directionSchool: this.schoolAddress
+      }
+      // eslint-disable-next-line no-console
+      console.log('@@ data =>', sendData)
+      const url = 'http://localhost:8010/api/auth/signup' // URL completa especificada aquí
+      this.$axios.post(url, sendData)
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          console.log('@@ res =>', res)
+          if (res.data.message === 'Usuario registrado satisfactoriamente') {
+            this.$nuxt.$emit('evento', {
+              message: res.data.message,
+              color: 'success',
+              type: 'success',
+              time: 2000
+            })
+          }
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.log('@@ err =>', err)
+        })
     }
+
   }
 }
 </script>

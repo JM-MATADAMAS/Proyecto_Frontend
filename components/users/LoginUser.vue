@@ -12,6 +12,7 @@
       <v-card-subtitle color="#667085" style="font-size: 16px; margin-top: 8%; max-width: 55%; min-width: 50%;">
         It is our great pleasure to have you on board!
         <v-text-field
+          v-model="schoolName"
           outlined
           dense
           single-line
@@ -19,8 +20,15 @@
           type="text"
           style="margin-top: 10%; font-size: small"
         />
-        <v-text-field outlined dense single-line label="Enter password" type="password" />
-        <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;">
+        <v-text-field
+          v-model="password"
+          outlined
+          dense
+          single-line
+          label="Enter password"
+          type="password"
+        />
+        <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;" @click="login()">
           Login
         </v-btn>
       </v-card-subtitle>
@@ -35,7 +43,18 @@
 <script>
 export default {
   name: 'LoginComponent',
+  layout: 'login',
+  data () {
+    return {
+      schoolName: null,
+      password: null
+    }
+  },
   methods: {
+    login () {
+
+    },
+
     SignUp () {
       this.$router.push({
         path: '/signup/'
