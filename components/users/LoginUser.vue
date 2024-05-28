@@ -52,9 +52,38 @@ export default {
   },
   methods: {
     login () {
-
+      const sendData = {
+        nombreSchool: this.schoolName,
+        password: this.password
+      }
+      // eslint-disable-next-line no-console
+      console.log('@@ data =>', sendData)
+      const url = 'http://localhost:8010/api/auth/login' // URL completa especificada aquí
+      this.$axios.post(url, sendData)
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          console.log('@@ res =>', res)
+          if (res.data.message === 'Logged In') {
+            this.$nuxt.$emit('evento', {
+              message: res.data.message,
+              color: 'success',
+              type: 'success',
+              time: 2000
+            })
+            this.$router.push({
+              path: '/principal/'
+            })
+          }
+        })
+        .catch(() => {
+          this.$nuxt.$emit('evento', {
+            message: 'Something went wrong, try again',
+            color: 'error',
+            type: 'error',
+            time: 2000
+          })
+        })
     },
-
     SignUp () {
       this.$router.push({
         path: '/signup/'
