@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
   <v-app dark>
     <v-navigation-drawer permanent color="#152259" style="height: 100%; max-width: 50%;">
@@ -20,59 +19,157 @@
       <v-list
         nav
         dense
-        dark
         style="margin-left: 7%; margin-right: 7%;"
       >
-        <v-list-item-group
-          v-model="selectedItem"
-          color="primary"
-        >
-          <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            :style="{ backgroundColor: selectedItem === i ? '#509CDB' : 'transparent', opacity: 1 }"
-            @click="toggleItem(i)"
-          >
-            <v-list-item-icon>
-              <v-icon color="white" v-text="item.icon" />
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title style="color: white; font-size: small;" v-text="item.text" />
-            </v-list-item-content>
-
-            <v-list-item-icon v-if="item.children && item.children.length">
-              <v-icon color="white">
-                mdi-chevron-down
-              </v-icon>
-            </v-list-item-icon>
-          </v-list-item>
-          <v-list-group
-            v-for="(child, j) in items[selectedItem]?.children || []"
-            :key="j"
-            no-action
-            sub-group
-          >
-            <template #activator>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title style="color: white; font-size: small;" v-text="child.text" />
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-          </v-list-group>
-        </v-list-item-group>
-        <v-list-item style="margin-top: 71%; margin-bottom: 71%;">
-          <v-list-item-icon>
-            <v-icon color="white">
+        <v-list-item>
+          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+            <v-icon color="white" style="margin-right: 8%;">
+              mdi-home-outline
+            </v-icon>
+            Dashboard
+          </v-btn>
+        </v-list-item>
+        <v-list-item>
+          <v-expansion-panels>
+            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
+              <v-expansion-panel-header class="text-left" style="padding-left: 4px; font-size: 14px">
+                <v-icon color="white">
+                  mdi-home-outline
+                </v-icon>
+                Teachers
+                <v-spacer />
+                <template #actions>
+                  <v-icon color="white">
+                    mdi-chevron-down
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  All teachers
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Add teachers
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Teacher details
+                </v-btn>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
+              <v-expansion-panel-header class="text-left" style="padding-left: 16px; font-size: 14px">
+                <v-icon color="white" style="margin-right: 15px;">
+                  mdi-school-outline
+                </v-icon>
+                Students/Classes
+                <v-spacer />
+                <template #actions>
+                  <v-icon color="white">
+                    mdi-chevron-down
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  All students
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Admision Form
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Student Promotion
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-start">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Class
+                </v-btn>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
+              <v-expansion-panel-header class="text-left" style="padding-left: 2px; font-size: 14px">
+                <v-icon color="white">
+                  mdi-bank-outline
+                </v-icon>
+                Billing
+                <v-spacer />
+                <template #actions>
+                  <v-icon color="white">
+                    mdi-chevron-down
+                  </v-icon>
+                </template>
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Student Billing
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Parent Billing
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  School Billing
+                </v-btn>
+                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                  <v-icon color="white">
+                    mdi-chevron-right
+                  </v-icon>
+                  Friends Billing
+                </v-btn>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-list-item>
+        <v-list-item>
+          <v-btn color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 10px; justify-content: flex-start;">
+            <v-icon color="white" style="margin-right: 5%;">
+              mdi-cog-outline
+            </v-icon>
+            Settings and profile
+          </v-btn>
+        </v-list-item>
+        <v-list-item>
+          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+            <v-icon color="white" style="margin-right: 8%;">
+              mdi-chart-box-outline
+            </v-icon>
+            Exams
+          </v-btn>
+        </v-list-item>
+        <v-list-item>
+          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+            <v-icon color="white" style="margin-right: 8%;">
               mdi-bank-outline
             </v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title style="color: white; font-size: small;">
-              Features
-            </v-list-item-title>
-          </v-list-item-content>
+            Features
+          </v-btn>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -82,41 +179,13 @@
 <script>
 export default {
   data: () => ({
-    selectedItem: 0,
-    items: [
-      { text: 'Dashboard', icon: 'mdi-home-outline' },
-      {
-        text: 'Teachers',
-        icon: 'mdi-home-outline',
-        children: [
-          { text: 'Teacher 1' },
-          { text: 'Teacher 2' }
-        ]
-      },
-      {
-        text: 'Students/ classes',
-        icon: 'mdi-school-outline',
-        children: [
-          { text: 'Class 1' },
-          { text: 'Class 2' }
-        ]
-      },
-      {
-        text: 'Billing',
-        icon: 'mdi-bank-outline',
-        children: [
-          { text: 'Invoice 1' },
-          { text: 'Invoice 2' }
-        ]
-      },
-      { text: 'Settings and profile', icon: 'mdi-cog-outline' },
-      { text: 'Exams', icon: 'mdi-chart-box-outline' }
-    ]
-  }),
-  methods: {
-    toggleItem (index) {
-      this.selectedItem = this.selectedItem === index ? null : index
-    }
-  }
+    selectedItem: 0
+  })
 }
 </script>
+
+<style scoped>
+.text-left {
+  justify-content: flex-start !important;
+}
+</style>
