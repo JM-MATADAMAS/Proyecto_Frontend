@@ -95,8 +95,8 @@
     </v-main>
   </v-app>
 </template>
-<script>
 
+<script>
 export default {
   name: 'DefaultLayout',
   data () {

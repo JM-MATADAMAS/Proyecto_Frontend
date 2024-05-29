@@ -1,6 +1,12 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer permanent color="#152259" style="height: 100%; max-width: 50%;">
+  <v-app>
+    <v-navigation-drawer
+      app
+      permanent
+      color="#152259"
+      style="height: 100%; max-width: 50%;"
+    >
+      <!-- Contenido del drawer -->
       <v-list>
         <v-list-item>
           <v-avatar size="65" class="mx-auto" style="margin-top: 15px;">
@@ -9,20 +15,26 @@
         </v-list-item>
         <v-list-item dense style="margin-bottom: 30px;">
           <v-list-item-content>
-            <v-list-item-title class="text-center" style="color: white; font: Kumbh Sans; font-size: medium; margin-top: 20px;">
+            <v-list-item-title
+              class="text-center"
+              style="color: white; font: Kumbh Sans; font-size: medium; margin-top: 20px;"
+            >
               Udemy Inter. school
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
       <v-divider color="#BDBDBD" />
-      <v-list
-        nav
-        dense
-        style="margin-left: 7%; margin-right: 7%;"
-      >
+      <v-list nav dense style="margin-left: 7%; margin-right: 7%;">
         <v-list-item>
-          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+          <v-btn
+            block
+            color="#152259"
+            elevation="0"
+            class="mx-auto"
+            style="color: #ffffff; font-size: 11px; justify-content: flex-start;"
+            @click="$router.push({ path: '/principal/'})"
+          >
             <v-icon color="white" style="margin-right: 8%;">
               mdi-home-outline
             </v-icon>
@@ -31,8 +43,14 @@
         </v-list-item>
         <v-list-item>
           <v-expansion-panels>
-            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
-              <v-expansion-panel-header class="text-left" style="padding-left: 4px; font-size: 14px">
+            <v-expansion-panel
+              style="background-color: #152259; color: white;"
+              elevation="0"
+            >
+              <v-expansion-panel-header
+                class="text-left"
+                style="padding-left: 4px; font-size: 14px"
+              >
                 <v-icon color="white">
                   mdi-home-outline
                 </v-icon>
@@ -45,19 +63,37 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   All teachers
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   Add teachers
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
@@ -65,8 +101,14 @@
                 </v-btn>
               </v-expansion-panel-content>
             </v-expansion-panel>
-            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
-              <v-expansion-panel-header class="text-left" style="padding-left: 16px; font-size: 14px">
+            <v-expansion-panel
+              style="background-color: #152259; color: white;"
+              elevation="0"
+            >
+              <v-expansion-panel-header
+                class="text-left"
+                style="padding-left: 16px; font-size: 14px"
+              >
                 <v-icon color="white" style="margin-right: 15px;">
                   mdi-school-outline
                 </v-icon>
@@ -79,25 +121,49 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   All students
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   Admision Form
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   Student Promotion
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-start">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-start"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
@@ -105,8 +171,14 @@
                 </v-btn>
               </v-expansion-panel-content>
             </v-expansion-panel>
-            <v-expansion-panel style="background-color: #152259; color: white;" elevation="0">
-              <v-expansion-panel-header class="text-left" style="padding-left: 2px; font-size: 14px">
+            <v-expansion-panel
+              style="background-color: #152259; color: white;"
+              elevation="0"
+            >
+              <v-expansion-panel-header
+                class="text-left"
+                style="padding-left: 2px; font-size: 14px"
+              >
                 <v-icon color="white">
                   mdi-bank-outline
                 </v-icon>
@@ -119,25 +191,49 @@
                 </template>
               </v-expansion-panel-header>
               <v-expansion-panel-content>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   Student Billing
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   Parent Billing
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
                   School Billing
                 </v-btn>
-                <v-btn text block color="white" style="font-size: x-small;" class="mx-auto">
+                <v-btn
+                  text
+                  block
+                  color="white"
+                  style="font-size: x-small;"
+                  class="mx-auto"
+                >
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
@@ -148,7 +244,12 @@
           </v-expansion-panels>
         </v-list-item>
         <v-list-item>
-          <v-btn color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 10px; justify-content: flex-start;">
+          <v-btn
+            color="#152259"
+            elevation="0"
+            class="mx-auto"
+            style="color: #ffffff; font-size: 10px; justify-content: flex-start;"
+          >
             <v-icon color="white" style="margin-right: 5%;">
               mdi-cog-outline
             </v-icon>
@@ -156,7 +257,13 @@
           </v-btn>
         </v-list-item>
         <v-list-item>
-          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+          <v-btn
+            block
+            color="#152259"
+            elevation="0"
+            class="mx-auto"
+            style="color: #ffffff; font-size: 11px; justify-content: flex-start;"
+          >
             <v-icon color="white" style="margin-right: 8%;">
               mdi-chart-box-outline
             </v-icon>
@@ -164,7 +271,13 @@
           </v-btn>
         </v-list-item>
         <v-list-item>
-          <v-btn block color="#152259" elevation="0" class="mx-auto" style="color: #ffffff; font-size: 11px; justify-content: flex-start;">
+          <v-btn
+            block
+            color="#152259"
+            elevation="0"
+            class="mx-auto"
+            style="color: #ffffff; font-size: 11px; justify-content: flex-start;"
+          >
             <v-icon color="white" style="margin-right: 8%;">
               mdi-bank-outline
             </v-icon>
@@ -173,11 +286,17 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <v-main>
+      <v-container>
+        <Nuxt />
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
 <script>
 export default {
+  name: 'Principal',
   data: () => ({
     selectedItem: 0
   })
@@ -185,6 +304,18 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+.fuente-kumbh {
+  font-family: "Kumbh Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:
+    "YOPQ" 300;
+}
+
 .text-left {
   justify-content: flex-start !important;
 }

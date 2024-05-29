@@ -70,6 +70,11 @@ export default {
               type: 'success',
               time: 2000
             })
+            if (res.data.token) {
+              localStorage.setItem('token', res.data.token)
+              // Redirigir a una página nueva
+              this.$router.push('/principal')
+            }
             this.$router.push({
               path: '/principal/'
             })
