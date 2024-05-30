@@ -69,6 +69,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/teachers/allTeachers'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -81,6 +82,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/teachers/addTeachers'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -288,6 +290,12 @@
     </v-navigation-drawer>
     <v-main>
       <v-container>
+        <ui-alert
+          v-if="showAlert"
+          :message="mensaje"
+          :color="color"
+          :type="type"
+        />
         <Nuxt />
       </v-container>
     </v-main>
@@ -297,9 +305,35 @@
 <script>
 export default {
   name: 'Principal',
-  data: () => ({
-    selectedItem: 0
-  })
+  data () {
+    return {
+      showAlert: false,
+      mensaje: '',
+      color: '',
+      type: ''
+    }
+  },
+  mounted () {
+    const token = localStorage.getItem('token')
+    if (!token) {
+      this.$router.push({
+        path: '/login/'
+      })
+    }
+  },
+  created () {
+    this.$nuxt.$on('evento', (data) => {
+      // eslint-disable-next-line no-console
+      console.log('@@@ data login =>', data)
+      this.mensaje = data.message
+      this.color = data.color
+      this.type = data.type
+      this.showAlert = true
+      setTimeout(() => {
+        this.showAlert = false
+      }, 5000)
+    })
+  }
 }
 </script>
 

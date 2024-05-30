@@ -123,14 +123,6 @@ export default {
     ],
     closeOnClick: true
   }),
-  mounted () {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      this.$router.push({
-        path: '/login/'
-      })
-    }
-  },
   methods: {
     logout () {
       localStorage.removeItem('token')
