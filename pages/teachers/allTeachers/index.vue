@@ -106,15 +106,18 @@ export default {
       { text: 'Email address', align: 'start', sortable: false, value: 'email' },
       { text: 'Gender', align: 'start', sortable: false, value: 'genero' }
     ],
-    teachers: []
+    teachers: [],
+    nombreSchool: ''
   }),
   mounted () {
     this.token = localStorage.getItem('token')
+    this.nombreSchool = localStorage.getItem('nombreSchool')
     this.getAllTeachers()
   },
   methods: {
     logout () {
       localStorage.removeItem('token')
+      localStorage.removeItem('nombreSchool')
       this.$router.push({ path: '/' })
     },
     getAllTeachers () {
@@ -127,7 +130,8 @@ export default {
       this.$axios.get(url, config)
         .then((res) => {
           if (res.data.message === 'Success') {
-            this.teachers = res.data.teachers.teachers
+          // Filtrar los teachers por nombreSchool
+            this.teachers = res.data.teachers.teachers.filter(teacher => teacher.designation === this.nombreSchool)
           } else if (res.data.message === 'Invalid Token') {
             this.$router.push('/')
           }
@@ -145,5 +149,6 @@ export default {
       return item.fullName.toLowerCase().includes(search.toLowerCase())
     }
   }
+
 }
 </script>

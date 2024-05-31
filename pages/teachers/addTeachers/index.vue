@@ -24,6 +24,8 @@
             label="Designation"
             outlined
             dense
+            readonly
+            disabled
           />
         </v-row>
         <v-row style="margin-left: 8%; font-family: Kumbh Sans; color: #4F4F4F;">
@@ -125,15 +127,27 @@ export default {
       subjectTeacher: null
     })
   },
+  mounted () {
+    this.getDesignation()
+  },
   methods: {
     logout () {
-      localStorage.removeItem('token')
+      localStorage.removeItem('token', 'nombreSchool')
       this.$router.push({
         path: '/'
       })
     },
+    getDesignation () {
+      const nombreSchool = localStorage.getItem('nombreSchool')
+      // eslint-disable-next-line no-console
+      console.log(nombreSchool)
+      if (nombreSchool) {
+        this.designationTeacher = nombreSchool
+      }
+    },
     addTeacher () {
       const sendData = {
+        designation: this.designationTeacher,
         fullName: this.nameTeacher,
         password: this.passwordTeacher,
         phoneNumber: this.phoneTeacher,
