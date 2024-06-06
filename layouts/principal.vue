@@ -204,6 +204,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/billing/studentBilling/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -216,6 +217,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/billing/parentBilling/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -228,6 +230,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/billing/schoolBilling/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -240,6 +243,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/billing/friendsBilling/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
