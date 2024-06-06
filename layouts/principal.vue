@@ -95,6 +95,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/teachers/teacherDetails'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -129,6 +130,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/students/allStudents'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -141,6 +143,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/students/admissionForms/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -153,6 +156,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-auto"
+                  @click="$router.push({ path: '/students/studentPromotion/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -165,6 +169,7 @@
                   color="white"
                   style="font-size: x-small;"
                   class="mx-start"
+                  @click="$router.push({ path: '/students/class/'})"
                 >
                   <v-icon color="white">
                     mdi-chevron-right
@@ -323,8 +328,6 @@ export default {
   },
   created () {
     this.$nuxt.$on('evento', (data) => {
-      // eslint-disable-next-line no-console
-      console.log('@@@ data login =>', data)
       this.mensaje = data.message
       this.color = data.color
       this.type = data.type

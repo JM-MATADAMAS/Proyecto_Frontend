@@ -37,6 +37,7 @@
             mdi-chevron-down
           </v-icon>
         </v-btn>
+        <v-icon>mdi-magnify</v-icon>
         <v-text-field
           v-model="search"
           placeholder="Search for a teacher by name"
@@ -64,6 +65,7 @@
             mdi-chevron-down
           </v-icon>
         </v-btn>
+        <v-icon>mdi-magnify</v-icon>
         <v-text-field
           v-model="search"
           placeholder="Search for a teacher by name"
@@ -78,14 +80,16 @@
         :headers="headers"
         :items="teachers"
         :search="search"
+        :sort-by="['id']"
+        :sort-desc="[false]"
         :custom-filter="customFilter"
         hide-default-footer
         style="margin-top: 2%; font-family: Kumbh Sans; font-weight: bold;"
       >
         <template #[`item.fullName`]="{ item, index }">
           <v-avatar size="30" left>
-            <img v-if="item.genero == 'Male'" :key="`male-${index}`" :src="`https://randomuser.me/api/portraits/men/${index + 1}.jpg`" alt="Avatar">
-            <img v-if="item.genero == 'Female'" :key="`female-${index}`" :src="`https://randomuser.me/api/portraits/women/${index + 1}.jpg`" alt="Avatar">
+            <img v-if="item.genero == 'Male'" :key="`male-${100 - (index+1)}`" :src="`https://randomuser.me/api/portraits/men/${100 - (index+1)}.jpg`" alt="Avatar">
+            <img v-if="item.genero == 'Female'" :key="`female-${100 - (index+1)}`" :src="`https://randomuser.me/api/portraits/women/${100 - (index+1)}.jpg`" alt="Avatar">
           </v-avatar>
           <span>{{ item.fullName }}</span>
         </template>

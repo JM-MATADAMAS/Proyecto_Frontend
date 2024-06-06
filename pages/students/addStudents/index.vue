@@ -17,10 +17,10 @@
     <v-card elevation="0">
       <v-col cols="8">
         <v-row style="margin-top: 9%; margin-left: 10%; font-family: Kumbh Sans; font-size: xx-large; color: #4F4F4F;">
-          Add Teachers
+          Add Students
           <v-spacer />
           <v-text-field
-            v-model="designationTeacher"
+            v-model="designationStudent"
             label="Designation"
             outlined
             dense
@@ -43,7 +43,7 @@
       </v-col>
       <v-col cols="8" style="margin-left: 8%; margin-top: 3%; font-family: Kumbh Sans; color: #4F4F4F;">
         <v-text-field
-          v-model="nameTeacher"
+          v-model="nameStudent"
           label="Full name"
           outlined
           dense
@@ -51,7 +51,7 @@
       </v-col>
       <v-row>
         <v-text-field
-          v-model="emailTeacher"
+          v-model="emailStudent"
           label="Email address"
           outlined
           dense
@@ -59,26 +59,26 @@
         />
         <v-col cols="4" style="display: flex; margin-left: 2%;  margin-right:20% ; font-family: Kumbh Sans; color: #4F4F4F;">
           <v-select
-            v-model="classTeacher"
+            v-model="classStudent"
             outlined
             dense
             label="Class"
             :items="classItems"
             style="margin-right: 7%; width:auto;"
           />
-          <v-select v-model="genderTeacher" outlined dense label="Gender" :items="genderItems" />
+          <v-select v-model="genderStudent" outlined dense label="Gender" :items="genderItems" />
         </v-col>
       </v-row>
       <v-row>
         <v-text-field
-          v-model="passwordTeacher"
+          v-model="passwordStudent"
           label="Password"
           outlined
           dense
           style=" margin-left: 10%; margin-top: 1%; display: flex; font-family: Kumbh Sans; color: #4F4F4F;"
         />
         <v-text-field
-          v-model="phoneTeacher"
+          v-model="phoneStudent"
           label="Phone number"
           outlined
           dense
@@ -86,22 +86,17 @@
         />
       </v-row>
       <v-row>
-        <v-col cols="2" style="margin-left: 9%;">
-          <v-select v-model="subjectTeacher" label="Subject" dense outlined :items="subjectItems" />
-        </v-col>
-      </v-row>
-      <v-row>
         <v-btn elevation="0" color="white" style="color:white; margin-left: 8%;">
           <v-icon color="#424242">
             mdi-plus-circle-outline
           </v-icon>
-          <span style="color: #4F4F4F; text-transform: capitalize;">
+          <span style="color: #4F4F4F; text-transform: capitalize;" @click="addStudent()">
             Add another
           </span>
         </v-btn>
         <v-btn elevation="0" color="#F1F1F1">
-          <span style="color: #4F4F4F; text-transform: capitalize;" @click="addTeacher()">
-            Add Teacher
+          <span style="color: #4F4F4F; text-transform: capitalize;" @click="addStudentPush()">
+            Add Student
           </span>
         </v-btn>
       </v-row>
@@ -114,17 +109,15 @@ export default {
   layout: 'principal',
   data: () => {
     return ({
-      designationTeacher: null,
-      nameTeacher: null,
-      emailTeacher: null,
+      designationStudent: null,
+      nameStudent: null,
+      emailStudent: null,
       classItems: ['S1', 'S2', 'C1', 'C2', 'E1', 'E2', 'A1', 'A2', 'G1', 'G2'],
-      classTeacher: null,
+      classStudent: null,
       genderItems: ['Male', 'Female', 'Other'],
-      genderTeacher: null,
-      passwordTeacher: null,
-      phoneTeacher: null,
-      subjectItems: ['English', 'Spanish', 'Math', 'Art', 'Science', 'Physical Education', 'History'],
-      subjectTeacher: null
+      genderStudent: null,
+      passwordStudent: null,
+      phoneStudent: null
     })
   },
   mounted () {
@@ -139,42 +132,65 @@ export default {
     },
     getDesignation () {
       const nombreSchool = localStorage.getItem('nombreSchool')
-      // eslint-disable-next-line no-console
-      console.log(nombreSchool)
       if (nombreSchool) {
-        this.designationTeacher = nombreSchool
+        this.designationStudent = nombreSchool
       }
     },
-    addTeacher () {
+    addStudentPush () {
       const sendData = {
-        designation: this.designationTeacher,
-        fullName: this.nameTeacher,
-        password: this.passwordTeacher,
-        phoneNumber: this.phoneTeacher,
-        subject: this.subjectTeacher,
-        genero: this.genderTeacher,
-        email: this.emailTeacher,
+        designation: this.designationStudent,
+        fullName: this.nameStudent,
+        password: this.passwordStudent,
+        phoneNumber: this.phoneStudent,
+        genero: this.genderStudent,
+        email: this.emailStudent,
         id: Date.now().toString(),
-        clase: this.classTeacher
+        clase: this.classStudent
       }
-      // Verificar los datos antes de enviar
-      // eslint-disable-next-line no-console
-      console.log('@@ data =>', sendData)
 
-      const url = 'http://localhost:8010/api/auth/signupTeacher/'
+      const url = 'http://localhost:8010/api/auth/signupStudents/'
       this.$axios.post(url, sendData)
         .then((res) => {
-          // eslint-disable-next-line no-console
-          console.log('@@ res =>', res)
           if (res.data.message === 'Usuario Registrado Satisfactoriamente') {
             this.$router.push({
-              path: '/teachers/allTeachers/'
+              path: '/students/allStudents/'
             })
           }
         })
         .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log('@@ err =>', err.response ? err.response.data : err.message)
+          this.$nuxt.$emit('evento', {
+            message: err.response.data.message,
+            color: 'error',
+            type: 'error',
+            time: 2000
+          })
+        })
+    },
+    addStudent () {
+      const sendData = {
+        designation: this.designationStudent,
+        fullName: this.nameStudent,
+        password: this.passwordStudent,
+        phoneNumber: this.phoneStudent,
+        genero: this.genderStudent,
+        email: this.emailStudent,
+        id: Date.now().toString(),
+        clase: this.classStudent
+      }
+
+      const url = 'http://localhost:8010/api/auth/signupStudents/'
+      this.$axios.post(url, sendData)
+        .then((res) => {
+          if (res.data.message === 'Usuario Registrado Satisfactoriamente') {
+            this.nameStudent = null
+            this.passwordStudent = null
+            this.phoneStudent = null
+            this.genderStudent = null
+            this.emailStudent = null
+            this.classStudent = null
+          }
+        })
+        .catch((err) => {
           this.$nuxt.$emit('evento', {
             message: err.response.data.message,
             color: 'error',

@@ -5,6 +5,8 @@
     :color="color"
     :dismissible="dismissible"
     class="alertClass"
+    elevation="2"
+    transition="scale-transition"
   >
     {{ message }}
   </v-alert>
@@ -14,7 +16,7 @@
 export default {
   props: {
     message: { type: String, default: '' },
-    dismissible: { type: Boolean, default: true },
+    dismissible: { type: Boolean, default: false },
     color: { type: String, default: 'primary' },
     type: { type: String, default: 'success' }
   }

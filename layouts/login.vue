@@ -25,8 +25,6 @@ export default {
   },
   created () {
     this.$nuxt.$on('evento', (data) => {
-      // eslint-disable-next-line no-console
-      console.log('@@@ data login =>', data)
       this.mensaje = data.message
       this.color = data.color
       this.type = data.type
