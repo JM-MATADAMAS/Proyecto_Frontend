@@ -12,13 +12,13 @@
       <v-container fluid>
         <v-row align="center" justify="space-between" no-gutters>
           <v-col cols="auto">
-            <v-img
-              src="https://s3-alpha-sig.figma.com/img/9a98/bc56/75248163a8e07abbbbb0492141c9529f?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HSUAYoZkh-ibu8r35PUKWN6su2n7-qckZNOFxk5KJdFT7dIlHQdyiUjMzHPXSwEj9b8RJbK6bKDesjazuWCOoe9Vlplo4-WVSiApi502pR9Rrn3Emv3wQ~HOWTzh4UsDHtKwLrBl5UPIkmDH9G68ZskXWLSoc52d-4VU5Ht4eIH8q1U5ks8MT~hKwWuQAPuB9g6sgATUuVL3PBA3CpGFx5OyM4VN5LhVRsVUwRiTKMT8iY94aHjir1wPn1qF8yC7uEUkK3vGg8LDKX-PHVFAkX70SRONw~wM3QoQ5tRfrbjBSd1UG1QuQnk3oqXPUoTu9eDl9opLEUfqCpJ~S~jMhA__"
+            <img
+              src="../static/Statisda.png"
               max-height="26"
-              max-width="98px"
+              width="98px"
               contain
               class="logo"
-            />
+            >
           </v-col>
           <v-spacer />
           <v-col class="d-none d-md-flex" cols="auto">

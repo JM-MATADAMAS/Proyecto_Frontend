@@ -213,6 +213,13 @@ export default {
               type: 'success  ',
               time: 2000
             })
+            this.nameTeacher = null
+            this.emailTeacher = null
+            this.classTeacher = null
+            this.genderTeacher = null
+            this.passwordTeacher = null
+            this.phoneTeacher = null
+            this.subjectTeacher = null
           }
         })
         .catch((err) => {
