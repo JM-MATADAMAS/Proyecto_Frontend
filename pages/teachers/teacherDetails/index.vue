@@ -51,6 +51,7 @@
           <v-avatar size="250">
             <img v-if="genero === 'Male'" :src="`https://randomuser.me/api/portraits/men/${100 - (id+1)}.jpg`" alt="Avatar">
             <img v-if="genero === 'Female'" :src="`https://randomuser.me/api/portraits/women/${100 - (id+1)}.jpg`" alt="Avatar">
+            <img v-if="genero == 'Other'" :src="`https://randomuser.me/api/portraits/lego/${id +1}.jpg`" alt="Avatar">
           </v-avatar>
         </v-row>
         <v-row class="justify-center">
