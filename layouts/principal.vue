@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      v-model="drawer"
       app
-      permanent
       color="#152259"
-      style="height: 100%; max-width: 50%;"
+      :temporary="$vuetify.breakpoint.smAndDown"
+      :permanent="!$vuetify.breakpoint.smAndDown"
+      style="height: 100%; max-width: 60%;"
     >
       <!-- Contenido del drawer -->
       <v-list>
@@ -13,11 +15,11 @@
             <img src="../static/logo.png" alt="image">
           </v-avatar>
         </v-list-item>
-        <v-list-item dense style="margin-bottom: 30px;">
+        <v-list-item dense style="margin-bottom: 10px;">
           <v-list-item-content>
             <v-list-item-title
               class="text-center"
-              style="color: white; font: Kumbh Sans; font-size: medium; margin-top: 20px;"
+              style="color: white; font-family: 'Kumbh Sans'; font-size: medium; font-weight: bold; margin-top: 20px;"
             >
               Udemy Inter. school
             </v-list-item-title>
@@ -148,7 +150,7 @@
                   <v-icon color="white">
                     mdi-chevron-right
                   </v-icon>
-                  Admision Form
+                  Admission Form
                 </v-btn>
                 <v-btn
                   text
@@ -299,6 +301,20 @@
     </v-navigation-drawer>
     <v-main>
       <v-container>
+        <!-- Botón flotante para abrir el drawer -->
+        <v-btn
+          v-if="$vuetify.breakpoint.smAndDown"
+          fab
+          elevation="0"
+          class="ma-10"
+          fixed
+          sticky
+          top
+          right
+          @click="drawer = !drawer"
+        >
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
         <ui-alert
           v-if="showAlert"
           :message="mensaje"
@@ -316,6 +332,7 @@ export default {
   name: 'Principal',
   data () {
     return {
+      drawer: true,
       showAlert: false,
       mensaje: '',
       color: '',
@@ -346,7 +363,7 @@ export default {
 
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
 .fuente-kumbh {
   font-family: "Kumbh Sans", sans-serif;

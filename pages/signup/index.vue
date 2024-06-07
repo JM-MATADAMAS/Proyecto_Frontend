@@ -1,16 +1,15 @@
 <template>
-  <div>
+  <div class="main-container">
     <!--Cabecera de la página-->
-    <h1 class="fuente" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 16px; margin-top: 4%; text-align: center; color: #4F4F4F;">
+    <h1 class="fuente header-text">
       Welcome, create your school account
     </h1>
     <v-card
       elevation="0"
       color="#FFFFFF"
-      style="display: flex; flex-direction: column; align-items: center; margin-top: 30px; width: 500px;  min-width: 500px;text-align: center;"
-      class="mx-auto"
+      class="mx-auto responsive-card"
     >
-      <v-card-subtitle color="#667085" style="font-size: 16px; margin-top: 12%; max-width: 55%; min-width: 50%;">
+      <v-card-subtitle class="subtitle-text">
         It is our great pleasure to have you on board!
         <!--Menú donde se solicita correo, administrador y escuela-->
         <div v-if="!showPasswordFields && !showStaffFields">
@@ -22,7 +21,7 @@
             single-line
             label="Enter the name of admin"
             type="text"
-            style="margin-top: 10%;"
+            class="input-field"
           />
           <v-text-field
             v-model="schoolName"
@@ -42,12 +41,12 @@
             label="Enter the school email"
             type="text"
           />
-          <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;" @click="goToPasswordFields">
+          <v-btn block color="#2D88D4" elevation="0" class="next-button" @click="goToPasswordFields">
             Next
           </v-btn>
         </div>
         <!--Menú donde se solicita la contraseña y si son iguales-->
-        <div v-if="showPasswordFields && !showStaffFields" style="font-size: small;">
+        <div v-if="showPasswordFields && !showStaffFields" class="password-fields">
           <v-text-field
             v-model="password"
             :rules="passwords"
@@ -57,7 +56,7 @@
             single-line
             label="Choose a password"
             :append-icon="passwordFieldType === 'password' ? 'mdi-eye-off-outline' : 'mdi-eye-outline'"
-            style="margin-top: 10%;"
+            class="input-field"
             @click:append="togglePasswordVisibility"
           />
           <v-text-field
@@ -76,7 +75,7 @@
             block
             color="#2D88D4"
             elevation="0"
-            style="color: white; padding: 0 0 0;"
+            class="next-button"
             @click="goToStaffFields"
           >
             Next
@@ -84,14 +83,14 @@
         </div>
         <!--Menú donde se ingresar a los colaboradores-->
         <div v-if="showStaffFields">
-          <v-select v-model="staffNumber" :items="staffItems" style="margin-top: 10%;" outlined label="staff" />
+          <v-select v-model="staffNumber" :items="staffItems" class="input-field" outlined label="staff" />
           <v-select v-model="schoolAddress" :items="schoolItems" outlined label="School address" />
-          <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;" @click="completeSignup">
+          <v-btn block color="#2D88D4" elevation="0" class="next-button" @click="completeSignup">
             Next
           </v-btn>
         </div>
       </v-card-subtitle>
-      <v-card-subtitle style="padding: 0 0 50px 0;">
+      <v-card-subtitle class="subtitle-bottom">
         <div v-if="!showPasswordFields && !showStaffFields">
           Already have an account?
           <a style="color: #2D88D4; text-decoration: none;" @click="Login">Login</a>
@@ -142,7 +141,7 @@ export default {
       schoolEmail: null,
       password: null,
       passwordConfirm: null,
-      staffItems: ['Admin', 'Secretaria', 'Recursos Humanos', 'Becas', 'Psicología', 'Desportes', 'Biblioteca', 'Laoratorio'],
+      staffItems: ['Admin', 'Secretaria', 'Recursos Humanos', 'Becas', 'Psicología', 'Deportes', 'Biblioteca', 'Laboratorio'],
       staffNumber: null,
       schoolItems: ['Avenida Universidad No. 789, Colonia El Refugio', 'Boulevard del Sol No. 2345, Colonia La Esperanza', 'Calle Independencia No. 456, Colonia Las Rosas', 'Avenida Revolución No. 678, Colonia San Ángel', 'Calle de los Pinos No. 123, Colonia Centro'],
       schoolAddress: null,
@@ -258,13 +257,14 @@ export default {
         .then((res) => {
           // eslint-disable-next-line no-console
           console.log('@@ res =>', res)
-          if (res.data.message === 'Usuario registrado satisfactoriamente') {
+          if (res.data.message === 'Usuario Registrado Satisfactoriamente') {
             this.$nuxt.$emit('evento', {
               message: res.data.message,
               color: 'success',
               type: 'success',
               time: 2000
             })
+            this.$router.push({ path: '/login/' })
           }
         })
         .catch((err) => {
@@ -278,6 +278,68 @@ export default {
 </script>
 
 <style scoped>
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 4%;
+  text-align: center;
+  color: #4F4F4F;
+}
+
+.responsive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 90%;
+  max-width: 500px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.subtitle-text {
+  font-size: 16px;
+  margin-top: 12%;
+  max-width: 55%;
+  min-width: 50%;
+}
+
+.subtitle-bottom {
+  padding: 0 0 50px 0;
+}
+
+.input-field {
+  margin-top: 10%;
+}
+
+.next-button {
+  color: white;
+  padding: 0 0 0;
+}
+
+.password-fields {
+  font-size: small;
+}
+
+@media (min-width: 600px) {
+  .responsive-card {
+    width: 500px;
+    min-width: 500px;
+  }
+}
+
 .stepper-custom {
   color: #f3f3f3;
   position: fixed;

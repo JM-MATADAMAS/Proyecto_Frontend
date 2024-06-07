@@ -1,5 +1,5 @@
 <template>
-  <v-sheet max-height="30%" max-width="100%" color="#100F57">
+  <v-sheet max-height="23%" max-width="100%" color="#100F57">
     <div style="display: flex; flex-direction: column; align-items: center;">
       <v-btn
         rounded
@@ -64,7 +64,7 @@
     <v-card elevation="0" style="display: flex; flex-direction: column; align-items: center; margin-top: 5%;">
       <v-card-title
         class="text-center"
-        style=" font-size: 2.5vw; font-weight: 600; font-family: 'Kumbh Sans', sans-serif; text-align: center;"
+        style=" font-size: 200%; font-weight: 600; font-family: 'Kumbh Sans', sans-serif; text-align: center;"
       >
         Trusted by company like
       </v-card-title>
@@ -90,14 +90,19 @@
     <div class="responsive-image-container">
       <img src="@/static/Frame_10.png" alt="Image" class="responsive-image">
     </div>
-    <v-card elevation="0" style="display:flex; align-items: center; flex-direction: column;">
-      <v-card-title class="fuente" style="color: #1777F7; font-size: 40px; margin-top: 2%;">
-        Pick up the best plan
-      </v-card-title>
-      <v-card-text class="fuente" style="max-width: 500px; font-size: 20px; text-align: center; color: #667085;">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus odio pellentesque pellentesque a. Amet ut lobortis pellentesque a, luctus maecenas.
-      </v-card-text>
-    </v-card>
+    <div class="responsive-image-container">
+      <img src="@/static/Frame_11.png" alt="Image" class="responsive-image">
+    </div>
+    <div class="responsive-image-container">
+      <img src="@/static/Frame_12.png" alt="Image" class="responsive-image">
+    </div>
+    <div class="responsive-image-container">
+      <img src="@/static/image_2.png" alt="Image" class="responsive-image-half">
+      <img src="@/static/Frame_13.png" alt="Image" class="responsive-image-half">
+    </div>
+    <div class="responsive-image-container" style="background-color: #100F57;">
+      <img src="@/static/Frame_3.png" alt="Image" class="responsive-image">
+    </div>
   </v-sheet>
 </template>
 
@@ -138,5 +143,11 @@ export default {
   width: 100%;
   height: auto;
   max-width: 1440px;
+}
+
+.responsive-image-half {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
 }
 </style>

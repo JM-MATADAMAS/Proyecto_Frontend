@@ -1,15 +1,14 @@
 <template>
   <div>
-    <h1 class="fuente" style="display: flex; flex-direction: column; align-items: center; margin-bottom: 16px; margin-top: 10%; text-align: center; color: #4F4F4F;">
+    <h1 class="fuente title-text">
       Welcome, Log into your account
     </h1>
     <v-card
       elevation="0"
       color="#FFFFFF"
-      style="display: flex; flex-direction: column; align-items: center; margin-top: 30px; width: 500px;  min-width: 500px;text-align: center;"
-      class="mx-auto"
+      class="login-card"
     >
-      <v-card-subtitle color="#667085" style="font-size: 16px; margin-top: 8%; max-width: 55%; min-width: 50%;">
+      <v-card-subtitle class="card-subtitle">
         It is our great pleasure to have you on board!
         <v-text-field
           v-model="schoolName"
@@ -18,7 +17,7 @@
           single-line
           label="Enter the name of school"
           type="text"
-          style="margin-top: 10%; font-size: small"
+          class="input-field"
         />
         <v-text-field
           v-model="password"
@@ -28,13 +27,20 @@
           label="Enter password"
           type="password"
         />
-        <v-btn block color="#2D88D4" elevation="0" style="color: white; padding: 0 0 0;" @click="login()">
+        <v-btn
+          block
+          color="#2D88D4"
+          elevation="0"
+          class="login-btn"
+          style="color: white;"
+          @click="login()"
+        >
           Login
         </v-btn>
       </v-card-subtitle>
-      <v-card-subtitle style="padding: 0 0 50px 0;">
+      <v-card-subtitle class="signup-subtitle">
         Didn't already have an account?
-        <a style="color: #2D88D4; text-decoration: none;" @click="SignUp ()">Sign up</a>
+        <a class="signup-link" @click="SignUp()">Sign up</a>
       </v-card-subtitle>
     </v-card>
   </div>
@@ -100,5 +106,74 @@ export default {
 </script>
 
 <style>
-/* Puedes añadir estilos adicionales aquí si es necesario */
+.title-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 10%;
+  text-align: center;
+  color: #4F4F4F;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  width: 30%;
+  min-width: 300px;
+  max-width: 90%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-subtitle {
+  color: #667085;
+  font-size: 16px;
+  margin-top: 8%;
+  margin-bottom: 2%;
+  max-width: 90%;
+  min-width: 50%;
+}
+
+.input-field {
+  margin-top: 15%;
+  font-size: small;
+}
+
+.login-btn {
+  color: white;
+  padding: 0 0 0;
+}
+
+.signup-subtitle {
+  padding: 0 0 50px 0;
+}
+
+.signup-link {
+  color: #2D88D4;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .title-text {
+    margin-top: 20%;
+    font-size: 18px;
+  }
+
+  .login-card {
+    width: 90%;
+    min-width: 90%;
+  }
+
+  .card-subtitle {
+    font-size: 14px;
+  }
+
+  .input-field {
+    margin-top: 5%;
+  }
+}
 </style>
