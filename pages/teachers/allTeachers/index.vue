@@ -92,6 +92,7 @@
           <v-avatar size="30" left>
             <img v-if="item.genero == 'Male'" :key="`male-${100 - (index+1)}`" :src="`https://randomuser.me/api/portraits/men/${100 - (index+1)}.jpg`" alt="Avatar">
             <img v-if="item.genero == 'Female'" :key="`female-${100 - (index+1)}`" :src="`https://randomuser.me/api/portraits/women/${100 - (index+1)}.jpg`" alt="Avatar">
+            <img v-if="item.genero == 'Other'" :key="`other-${100 - (index+1)}`" :src="`https://randomuser.me/api/portraits/lego/${10 - (index+1)}.jpg`" alt="Avatar">
           </v-avatar>
           <span>{{ item.fullName }}</span>
         </template>

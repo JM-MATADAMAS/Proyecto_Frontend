@@ -101,6 +101,7 @@
               <v-avatar size="30" left>
                 <img v-if="item.genero === 'Male'" :key="`male-${index}`" :src="`https://randomuser.me/api/portraits/men/${index + 1}.jpg`" alt="Avatar">
                 <img v-if="item.genero === 'Female'" :key="`female-${index}`" :src="`https://randomuser.me/api/portraits/women/${index + 1}.jpg`" alt="Avatar">
+                <img v-if="item.genero == 'Other'" :key="`other-${index}`" :src="`https://randomuser.me/api/portraits/lego/${index +1}.jpg`" alt="Avatar">
               </v-avatar>
               <span>{{ item.fullName }}</span>
             </template>
@@ -120,6 +121,10 @@
               <img
                 v-if="selectedStudentIndex.item.genero == 'Female'"
                 :src="`https://randomuser.me/api/portraits/women/${selectedStudentIndex.index +1 }.jpg`"
+              >
+              <img
+                v-if="selectedStudentIndex.item.genero == 'Other'"
+                :src="`https://randomuser.me/api/portraits/lego/${selectedStudentIndex.index +1 }.jpg`"
               >
             </v-avatar>
             <v-row style="margin-top: 5%; padding-bottom: 0%;">
