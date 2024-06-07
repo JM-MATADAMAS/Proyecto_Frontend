@@ -1,34 +1,34 @@
 <template>
-  <div>
-    <v-row style="margin-top: 1%; margin-left: 5%;">
-      <v-btn text style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 2.7%;" elevation="0">
-        <span style="color: #2671B1; text-transform: capitalize;">
+  <v-container fluid>
+    <v-row class="mt-1 ml-5">
+      <v-btn text class="white--text font-small mr-2.7" elevation="0">
+        <span class="blue--text capitalize">
           Export CSV
         </span>
       </v-btn>
-      <v-btn color="#509CDB" style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 5%;" elevation="0" @click="$router.push({ path: '/teachers/addTeachers'})">
-        <span style="color: #ffffff; text-transform: capitalize;">
+      <v-btn class="font-small mr-5" color="#509CDB" elevation="0" @click="$router.push({ path: '/teachers/addTeachers'})">
+        <span class="white--text capitalize">
           Add Teachers
         </span>
       </v-btn>
       <v-spacer />
       <v-btn icon>
-        <v-icon>
-          mdi-bell-badge-outline
-        </v-icon>
+        <v-badge dot>
+          <v-icon>
+            mdi-bell-outline
+          </v-icon>
+        </v-badge>
       </v-btn>
-      <v-btn text style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 5%;" elevation="0" @click="logout()">
-        <span style="color: #424242; text-transform: capitalize;">
+      <v-btn text class="white--text font-small mr-5" elevation="0" @click="logout()">
+        <span class="gray--text capitalize">
           Log out
         </span>
       </v-btn>
     </v-row>
-    <v-row style="display: flex; align-items: center; margin-top: 6.5%; margin-left: 2%; font-family: Kumbh Sans; font-weight: bold;">
-      <v-btn disabled style="color: white; height:200%; background-color: rgba(0, 0, 0, 0) !important;" elevation="0">
-        <span style="color: #C4C4C4; text-transform: capitalize;">
-          Add filter
-        </span>
-        <v-icon color="#C4C4C4">
+    <v-row class="mt-4 ml-2 mb-0 align-center bold-font">
+      <v-btn disabled class="white--text h-200 transparent-bg" elevation="0">
+        <span class="gray--text capitalize">Add filter</span>
+        <v-icon class="gray--text">
           mdi-chevron-down
         </v-icon>
       </v-btn>
@@ -45,70 +45,67 @@
         clear-icon="mdi-close-circle-outline"
       />
     </v-row>
-    <v-card v-if="cardDetails == true" elevation="0" class="mx-auto" style="display: flex; padding-top: 7%; font-family: Kumbh Sans;">
-      <v-col cols="1" />
-      <v-col cols="6">
-        <v-row style="display: flex; justify-content:center;">
-          <v-avatar size="250" left>
-            <img v-if="genero == 'Male'" :src="`https://randomuser.me/api/portraits/men/${100 - (id+1)}.jpg`" alt="Avatar">
-            <img v-if="genero == 'Female'" :src="`https://randomuser.me/api/portraits/women/${100 - (id+1)}.jpg`" alt="Avatar">
+    <v-card v-if="cardDetails" elevation="0" class="mx-auto d-flex pt-2 font-small" style=" display: flex; align-content: center; flex-wrap: wrap;">
+      <v-col cols="12" md="6" style="display: flex; flex-direction: column;">
+        <v-row class="justify-center pt-10">
+          <v-avatar size="250">
+            <img v-if="genero === 'Male'" :src="`https://randomuser.me/api/portraits/men/${100 - (id+1)}.jpg`" alt="Avatar">
+            <img v-if="genero === 'Female'" :src="`https://randomuser.me/api/portraits/women/${100 - (id+1)}.jpg`" alt="Avatar">
           </v-avatar>
         </v-row>
-        <v-row style="display: flex; justify-content:center;">
-          <v-card-title style="padding-top: 6%; font-weight: bold;">
+        <v-row class="justify-center">
+          <v-card-title class="pt-6 font-bold">
             {{ nameTeacher }}
           </v-card-title>
         </v-row>
-        <v-row style="display: flex; justify-content:center;">
-          <v-card-title style="padding-top: 0%; color: #A7A7A7;">
+        <v-row class="justify-center">
+          <v-card-title class="pt-0 gray--text">
             {{ subject }} teacher
           </v-card-title>
         </v-row>
-        <v-row style="display: flex; justify-content:center;">
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
+        <v-row class="justify-center">
+          <v-spacer /><v-spacer /><v-spacer /><v-spacer />
           <img src="../../../static/Frame_30086.png" width="61px">
           <v-spacer />
           <img src="../../../static/Frame_30087.png" width="61px">
           <v-spacer />
           <img src="../../../static/Frame_30088.png" width="61px">
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
+          <v-spacer /><v-spacer /><v-spacer /><v-spacer />
         </v-row>
       </v-col>
-      <v-col cols="6">
-        <v-row style="display: flex; justify-content:flex-start;">
+      <v-col cols="12" md="6" class="pt-0">
+        <v-row class="justify-start">
           <v-card-title>About</v-card-title>
         </v-row>
-        <v-row style="display: flex; justify-content:flex-start; max-width: 45%; padding-top: 0%;">
-          <v-card-text>Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. </v-card-text>
+        <v-row class="justify-start max-w-45 pt-0">
+          <v-card-text>Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.</v-card-text>
         </v-row>
-        <v-row style="display: flex; justify-content:flex-start;">
-          <v-card-title>Age: </v-card-title>
+        <v-row class="justify-start">
+          <v-card-title>Age:</v-card-title>
           <v-spacer />
-          <v-card-title>Gender: </v-card-title>
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
+          <v-card-title>Gender:</v-card-title>
+          <v-spacer /><v-spacer /><v-spacer />
         </v-row>
-        <v-row style="display: flex; justify-content:flex-start;">
-          <v-card-title>34 </v-card-title>
+        <v-row class="justify-start">
+          <v-card-title>34</v-card-title>
           <v-spacer />
-          <v-card-title>{{ genero }} </v-card-title>
-          <v-spacer />
-          <v-spacer />
-          <v-spacer />
+          <v-card-title>{{ genero }}</v-card-title>
+          <v-spacer /><v-spacer /><v-spacer />
         </v-row>
-        <v-row style="display: flex; justify-content:flex-start;">
+        <v-row class="justify-start">
+          <v-card-title class="pt-0 pb-1 font-bold">
+            Teachers from the same class
+          </v-card-title>
+        </v-row>
+        <v-row class="justify-start" style="padding-top: 2%; padding-bottom: 2%;">
           <avatar-group :avatars="avatarList" />
+          <v-card-text class="blue--text underline">
+            +12 more
+          </v-card-text>
         </v-row>
       </v-col>
     </v-card>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -129,12 +126,14 @@ export default {
       subject: null,
       id: null,
       genero: null,
+      class: null,
       avatarList: [
-        { src: 'https://randomuser.me/api/portraits/women/1.jpg' },
-        { src: 'https://randomuser.me/api/portraits/men/2.jpg' },
-        { src: 'https://randomuser.me/api/portraits/women/3.jpg' }
-        // Añade más avatares según sea necesario
-      ]
+        { src: 'https://randomuser.me/api/portraits/women/41.jpg' },
+        { src: 'https://randomuser.me/api/portraits/men/42.jpg' },
+        { src: 'https://randomuser.me/api/portraits/women/43.jpg' }
+      ],
+      link: null,
+      drawer: false // Añadir esta línea
     }
   },
   mounted () {
@@ -165,16 +164,37 @@ export default {
           this.id = i
           this.genero = body[i].genero
           this.subject = body[i].subject
+          this.class = body[i].clase
           break
         } else {
           this.cardDetails = false
         }
       }
-    },
-    customFilter (value, search, item) {
-      if (!search) { return true }
-      return item.fullName.toLowerCase().includes(search.toLowerCase())
     }
   }
 }
 </script>
+
+<style scoped>
+.font-small {
+  font-size: small;
+}
+.font-bold {
+  font-weight: bold;
+}
+.gray--text {
+  color: #424242;
+}
+.blue--text {
+  color: #2671B1;
+}
+.underline {
+  text-decoration: underline;
+}
+.h-200 {
+  height: 200%;
+}
+.transparent-bg {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+</style>

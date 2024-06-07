@@ -3,9 +3,11 @@
     <v-row style="font-weight: bold; margin-top: 1%; margin-left: 5%; margin-bottom:4% ;font-family: Kumbh Sans;">
       <v-spacer />
       <v-btn icon>
-        <v-icon>
-          mdi-bell-badge-outline
-        </v-icon>
+        <v-badge dot>
+          <v-icon>
+            mdi-bell-outline
+          </v-icon>
+        </v-badge>
       </v-btn>
       <v-btn text style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 5%;" elevation="0" @click="logout()">
         <span style="color: #424242; text-transform: capitalize;">
@@ -95,7 +97,7 @@
           <v-icon color="#424242">
             mdi-plus-circle-outline
           </v-icon>
-          <span style="color: #4F4F4F; text-transform: capitalize;">
+          <span style="color: #4F4F4F; text-transform: capitalize;" @click="addTeachers()">
             Add another
           </span>
         </v-btn>
@@ -169,6 +171,47 @@ export default {
           if (res.data.message === 'Usuario Registrado Satisfactoriamente') {
             this.$router.push({
               path: '/teachers/allTeachers/'
+            })
+          }
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.log('@@ err =>', err.response ? err.response.data : err.message)
+          this.$nuxt.$emit('evento', {
+            message: err.response.data.message,
+            color: 'error',
+            type: 'error',
+            time: 2000
+          })
+        })
+    },
+    addTeachers () {
+      const sendData = {
+        designation: this.designationTeacher,
+        fullName: this.nameTeacher,
+        password: this.passwordTeacher,
+        phoneNumber: this.phoneTeacher,
+        subject: this.subjectTeacher,
+        genero: this.genderTeacher,
+        email: this.emailTeacher,
+        id: Date.now().toString(),
+        clase: this.classTeacher
+      }
+      // Verificar los datos antes de enviar
+      // eslint-disable-next-line no-console
+      console.log('@@ data =>', sendData)
+
+      const url = 'http://localhost:8010/api/auth/signupTeacher/'
+      this.$axios.post(url, sendData)
+        .then((res) => {
+          // eslint-disable-next-line no-console
+          console.log('@@ res =>', res)
+          if (res.data.message === 'Usuario Registrado Satisfactoriamente') {
+            this.$nuxt.$emit('evento', {
+              message: res.data.message,
+              color: 'success',
+              type: 'success  ',
+              time: 2000
             })
           }
         })

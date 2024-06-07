@@ -3,9 +3,11 @@
     <v-row style="margin-top: 1%; margin-left: 5%;">
       <v-spacer />
       <v-btn icon>
-        <v-icon>
-          mdi-bell-badge-outline
-        </v-icon>
+        <v-badge dot>
+          <v-icon>
+            mdi-bell-outline
+          </v-icon>
+        </v-badge>
       </v-btn>
       <v-btn text style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 5%;" elevation="0" @click="logout()">
         <span style="color: #424242; text-transform: capitalize;">

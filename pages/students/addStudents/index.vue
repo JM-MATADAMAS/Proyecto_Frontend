@@ -4,7 +4,7 @@
       <v-spacer />
       <v-btn icon>
         <v-icon>
-          mdi-bell-badge-outline
+          mdi-bell-outline
         </v-icon>
       </v-btn>
       <v-btn text style="color: white; font-family: Kumbh Sans; font-size: small; margin-right: 5%;" elevation="0" @click="logout()">
