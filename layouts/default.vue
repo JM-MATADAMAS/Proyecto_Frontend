@@ -15,7 +15,7 @@
             <img
               src="../static/Statisda.png"
               max-height="26"
-              width="98px"
+              width="96px"
               contain
               class="logo"
             >
