@@ -58,7 +58,7 @@
             <v-menu offset-y>
               <template #activator="{ on, attrs }">
                 <v-btn icon v-bind="attrs" v-on="on">
-                  <v-icon color="white">
+                  <v-icon color="#fff">
                     mdi-menu
                   </v-icon>
                 </v-btn>
